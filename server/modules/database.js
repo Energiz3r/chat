@@ -1,6 +1,9 @@
 
 mysql = require('mysql')
-globals = require('globals')
+globals = require('./globals')
+
+const initialCreate = false
+const sessionReset = false
 
 /*
   database: blazechat
@@ -11,8 +14,8 @@ globals = require('globals')
 
 let config = {
   host: "localhost"
-  ,user: "blaze"
-  ,password: "BlazeProof1337"
+  ,user: "blazechat"
+  ,password: "blaze123"
   ,multipleStatements: true
   ,database: "blazechat"
   ,typeCast: function castField( field, useDefaultTypeCasting ) {
@@ -31,9 +34,6 @@ let config = {
 
 //const db = mysql.createConnection(config)
 var db = mysql.createPool(config)
-
-const initialCreate = false
-const sessionReset = false
 
 const showErr = (err) => {
   console.log('╟ SQL Error: ' + err.code + ', ' + err.sqlMessage)
@@ -176,13 +176,14 @@ initialiseDatabase = () => {
 }
 
 //basic test to make sure at least one of the tables exists
-db.query("SELECT 1 FROM users LIMIT 1", (err) => {
-  if (err) {
-    console.log("Error connecting to database - stopping startup of BlazeChat:")
-    showErr(err)
-  } else {
+if (!initialCreate) {
+  db.query("SELECT 1 FROM users LIMIT 1", (err) => {
+    if (err) {
+      console.log("Error connecting to database - stopping startup of BlazeChat:")
+      showErr(err)
+    } else {
 
-    if (!initialCreate) {
+      
 
       globals.databaseConnected = true
       console.log("(database) Connected!")
@@ -228,10 +229,10 @@ db.query("SELECT 1 FROM users LIMIT 1", (err) => {
           }
         });
       }
-    } else {
-      initialiseDatabase()
     }
-  }
-});
+  })
+} else {
+  initialiseDatabase()
+};
 
 module.exports = db; 

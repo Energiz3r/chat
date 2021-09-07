@@ -19,6 +19,6 @@
   },
   "scripts": {
     "start": "node ./bin/www",
-    "serve": "node_modules/.bin/nodemon ./index.js"
+    "serve": "nodemon ./index.js"
   }
 }
