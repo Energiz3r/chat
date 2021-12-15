@@ -16,7 +16,7 @@
     "express-generator": "^4.16.0",
     "js-cookie": "^2.2.0",
     "mongoose": "^5.3.4",
-    "node-sass": "4.5.3",
+    "node-sass": "^6.0.1",
     "normalize.css": "7.0.0",
     "npm": "^6.4.1",
     "paste.js": "0.0.21",
@@ -28,21 +28,22 @@
     "react-redux": "",
     "react-transition-group": "",
     "redux": "^4.0.1",
-    "sass-loader": "6.0.6",
+    "sass-loader": "^10.2.0",
     "socket.io-client": "^2.1.1",
     "style-loader": "0.18.2",
     "validator": "8.0.0",
-    "webpack": "3.1.0"
+    "webpack": "^4.46.0"
   },
   "devDependencies": {
     "concurrently": "^3.6.1",
     "cpx": "^1.5.0",
     "del-cli": "^1.1.0",
     "eslint": "^4.19.1",
-    "webpack-dev-server": "2.5.1"
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^3.11.3"
   },
   "scripts": {
-    "serve": "node_modules/.bin/webpack-dev-server",
+    "serve": "npx webpack serve",
     "webpack-build": "node_modules/.bin/webpack",
     "webpack-prod": "node_modules/.bin/webpack -p --config webpack.config.prod.js",
     "webpack-watch": "node_modules/.bin/webpack --watch",

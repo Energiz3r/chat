@@ -15,7 +15,7 @@ const sessionReset = false
 let config = {
   host: "localhost"
   ,user: "blazechat"
-  ,password: "blaze123"
+  ,password: "BlazeProof1337"
   ,multipleStatements: true
   ,database: "blazechat"
   ,typeCast: function castField( field, useDefaultTypeCasting ) {
